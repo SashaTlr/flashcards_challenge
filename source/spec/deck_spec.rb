@@ -2,17 +2,17 @@ require_relative '../deck'
 
 describe Deck do
 
-  let(:my_card) {Flashcard.new('question', 'answer')}
+  let(:my_deck) {Deck.new('flashcard_samples.txt')}
 
   it 'is a proper class that can be initialized' do
-    expect{Flashcard.new('string1', 'string2')}.to_not raise_error
+    expect{Deck.new('flashcard_samples.txt')}.to_not raise_error
   end
 
-  # describe '#question' do
-  #   it 'is readable' do
-  #     expect(my_card.question).to eq('question')
-  #   end
-  # end
+  describe '#deck' do
+    it 'is an object' do
+      expect(my_deck).to be_an Object
+    end
+  end
 
   # describe '#answer' do
   #   it 'is readable' do
