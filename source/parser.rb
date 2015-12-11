@@ -1,7 +1,5 @@
 module Parseable
 
-  require 'pry'
-
   def parse_file(file)
 
     text_line_array = []
@@ -14,4 +12,3 @@ module Parseable
   end
 
 end
-
