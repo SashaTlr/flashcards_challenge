@@ -1,5 +1,5 @@
-
 class Flashcard
+
 attr_reader :question, :answer
 
   def initialize(question_string, answer_string)
