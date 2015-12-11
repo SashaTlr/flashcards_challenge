@@ -1,5 +1,2 @@
-Def 1
-alias
-
-Def two
-and
+What year is it?
+2015
