@@ -1,3 +1,4 @@
+# ARGV.inspect
 require_relative 'checker'
 require_relative 'deck'
 require_relative 'flashcards'
@@ -10,8 +11,8 @@ class Controller
   include Parseable
   include Checkable
 
-  def initialize
-    @deck = Deck.new('flashcard_samples.txt')
+  def initialize(args)
+    @deck = Deck.new(args[0])
     @viewer = View.new
     run_interface
   end
@@ -19,6 +20,7 @@ class Controller
   def run_interface
     @viewer.display_intro_message
     user_input = @viewer.input
+    # binding.pry
 
     until user_input == "exit"
       if @deck.deck.empty?
@@ -30,6 +32,7 @@ class Controller
       puts current_flashcard.question
       until user_input == current_flashcard.answer || user_input == 'exit'
         user_input = @viewer.input
+        # binding.pry
         case user_input
         when "exit"
           @viewer.display_exit_message
@@ -46,5 +49,5 @@ class Controller
 
 end
 
-Controller.new
+Controller.new(ARGV)
 

@@ -1,7 +1,7 @@
 class View
 
   def input
-    gets.chomp()
+    $stdin.gets.chomp()
   end
 
   def display_intro_message
