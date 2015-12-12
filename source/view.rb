@@ -5,22 +5,19 @@ class View
   end
 
   def display_intro_message
-
     puts "Welcome to Ruby Flash Cards. To play, just enter the correct term for each definition.  Ready?  Go!"
-    puts "Hit enter to start or exit to quit at any time"
   end
 
   def display_def
-    puts "Definition"
+    puts "\nDefinition\n "
   end
 
   def display_incorrect_guess
-    puts "Incorrect!  Try again."
-    puts
+    puts "\nIncorrect!  Try again.\n"
   end
 
-  def display_guess
-    "Guess: "
+  def display_guess(input)
+    puts "Guess: #{input}"
   end
 
   def display(output)
@@ -28,7 +25,15 @@ class View
   end
 
   def display_correct_guess
-    puts "Correct!"
+    puts "\nCorrect!\n"
+  end
+
+  def display_empty
+    puts "\nYou've answered all of the questions! Goodbye!\n"
+  end
+
+  def display_exit_message
+    puts "Thanks for playing!"
   end
 
 end

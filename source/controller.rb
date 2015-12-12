@@ -7,8 +7,8 @@ require_relative 'view'
 require 'pry'
 
 class Controller
-include Parseable
-include Checkable
+  include Parseable
+  include Checkable
 
   def initialize
     @deck = Deck.new('flashcard_samples.txt')
@@ -18,27 +18,33 @@ include Checkable
 
   def run_interface
     @viewer.display_intro_message
-    input = @viewer.input.downcase
-    until input == 'exit' do
+    user_input = @viewer.input
+
+    until user_input == "exit"
+      if @deck.deck.empty?
+        @viewer.display_empty
+        break
+      end
       @viewer.display_def
       current_flashcard = @deck.next_flashcard
       puts current_flashcard.question
-      puts
-      case @viewer.input
-        when current_flashcard.answer
-          @viewer.display_correct_guess
+      until user_input == current_flashcard.answer || user_input == 'exit'
+        user_input = @viewer.input
+        case user_input
         when "exit"
+          @viewer.display_exit_message
+        when current_flashcard.answer
+          @viewer.display_guess(user_input)
+          @viewer.display_correct_guess
         else
-
+          @viewer.display_guess(user_input)
+          @viewer.display_incorrect_guess
+        end
       end
     end
-    # binding.pry
   end
 
-
-  def flashcards
-
-  end
 end
 
 Controller.new
+
